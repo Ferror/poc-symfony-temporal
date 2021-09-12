@@ -26,6 +26,12 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-factory": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/log": {
         "version": "2.0.0"
     },
@@ -41,14 +47,29 @@
     "spiral/attributes": {
         "version": "v2.8.10"
     },
+    "spiral/core": {
+        "version": "v2.8.10"
+    },
     "spiral/goridge": {
         "version": "v3.1.1"
+    },
+    "spiral/logger": {
+        "version": "v2.8.10"
+    },
+    "spiral/roadrunner": {
+        "version": "v2.4.0"
     },
     "spiral/roadrunner-cli": {
         "version": "v2.0.7"
     },
+    "spiral/roadrunner-http": {
+        "version": "v2.0.3"
+    },
     "spiral/roadrunner-worker": {
         "version": "v2.1.1"
+    },
+    "spiral/tokenizer": {
+        "version": "v2.8.10"
     },
     "symfony/cache": {
         "version": "v5.3.7"

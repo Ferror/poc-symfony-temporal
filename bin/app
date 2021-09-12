@@ -1,0 +1,28 @@
+#!/usr/bin/env php
+<?php
+declare(strict_types=1);
+
+use App\DeclarationLocator;
+use Temporal\Client\GRPC\ServiceClient;
+use Temporal\Client\WorkflowClient;
+use Symfony\Component\Console\Application;
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+// finds all available workflows, activity types and commands in a given directory
+$declarations = DeclarationLocator::create(dirname(__DIR__) . '/src/');
+
+$host = getenv('TEMPORAL_CLI_ADDRESS');
+if (empty($host)) {
+    $host = 'localhost:7233';
+}
+
+$workflowClient = WorkflowClient::create(ServiceClient::create($host));
+
+$app = new Application('Temporal PHP-SDK Samples');
+
+foreach ($declarations->getCommands() as $command) {
+    $app->add(new $command($workflowClient));
+}
+
+$app->run();
