@@ -8,7 +8,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     make \
     unzip \
-    supervisor\
+    supervisor \
+    nginx \
     php-common \
     php-fpm \
     php-pear \
@@ -44,8 +45,10 @@ RUN apt-get clean && apt-get autoclean
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
 
-#COPY .docker/nginx.conf         /etc/nginx/nginx.conf
+COPY .docker/nginx.conf         /etc/nginx/nginx.conf
 COPY .docker/supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY .docker/php.ini            /etc/php/8.0/cli/php.ini
 
 WORKDIR /app
+
+EXPOSE 80
