@@ -10,12 +10,12 @@ services:
         exclude:
             - '../src/Kernel.php'
 
-    Temporal\Client\GRPC\ServiceClient: ~
-
-    Temporal\Client\ServiceClientInterface:
-        factory: ['Temporal\Client\GRPC\ServiceClient', 'create']
-        arguments: ['localhost:7233']
-
-    Temporal\Client\WorkflowClientInterface:
-        class: Temporal\Client\WorkflowClient
-        arguments: ['@Temporal\Client\ServiceClientInterface']
+#    Temporal\Client\GRPC\ServiceClient: ~
+#
+#    Temporal\Client\ServiceClientInterface:
+#        factory: ['Temporal\Client\GRPC\ServiceClient', 'create']
+#        arguments: ['localhost:7233']
+#
+#    Temporal\Client\WorkflowClientInterface:
+#        class: Temporal\Client\WorkflowClient
+#        arguments: ['@Temporal\Client\ServiceClientInterface']

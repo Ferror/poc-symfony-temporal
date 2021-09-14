@@ -48,7 +48,6 @@ COPY .docker/nginx.conf         /etc/nginx/nginx.conf
 COPY .docker/supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY .docker/php.ini            /etc/php/8.0/cli/php.ini
 COPY .docker/php.ini            /etc/php/8.0/fpm/php.ini
-COPY .docker/www.conf           /etc/php/8.0/fpm/pool.d/www.conf
 
 WORKDIR /app
 

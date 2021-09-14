@@ -6,6 +6,7 @@ namespace App\Presentation\Web;
 use App\Workflows\Query\QueryWorkflowInterface;
 use Carbon\CarbonInterval;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Temporal\Client\GRPC\ServiceClient;
@@ -32,9 +33,11 @@ final class QueryController extends AbstractController
         $run = $this->workflowClient->start($workflow, 'Antony');
         sleep(2);
 
+        $result = $workflow->queryGreeting();
+
         // wait for workflow to complete
         $run->getResult();
 
-        return new Response();
+        return new JsonResponse([$result], 200);
     }
 }
