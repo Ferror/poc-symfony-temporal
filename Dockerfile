@@ -42,12 +42,13 @@ RUN pecl install protobuf-${PROTOBUF_VERSION} grpc-${GRPC_VERSION}
 
 RUN apt-get clean && apt-get autoclean
 
-# install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename composer
 
 COPY .docker/nginx.conf         /etc/nginx/nginx.conf
 COPY .docker/supervisor.conf    /etc/supervisor/conf.d/supervisor.conf
 COPY .docker/php.ini            /etc/php/8.0/cli/php.ini
+COPY .docker/php.ini            /etc/php/8.0/fpm/php.ini
+COPY .docker/www.conf           /etc/php/8.0/fpm/pool.d/www.conf
 
 WORKDIR /app
 
